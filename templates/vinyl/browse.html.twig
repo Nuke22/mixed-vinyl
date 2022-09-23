@@ -35,7 +35,7 @@
                     |
                     <span>{{ mix.genre }}</span>
                     |
-                    <span>{{ mix.createdAt | date("d-m-Y") }}</span>
+                    <span>{{ mix.createdAt | ago() }}</span>
                 </div>
             </div>
             {% endfor %}

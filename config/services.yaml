@@ -8,7 +8,6 @@ parameters:
 
 when@dev:
     parameters:
-        cache:
             cache_adapter: cache.adapter.array
 
 services:
@@ -25,10 +24,12 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+#        bind:
+#            "bool $isDebug": '%kernel.debug%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-
-    App\Service\MixRepository:
-        bind:
-            $isDebug: '%kernel.debug%'
+#
+#    App\Service\MixRepository:
+#        bind:
+#            "$twigDebugCommand": "@twig.command.debug"

@@ -13,44 +13,42 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
     name: 'app:talk-to-me',
-    description: 'Add a short description for your command',
+    description: 'A self-aware command that can do... only one thing.',
 )]
 class TalkToMeCommand extends Command
 {
-    public function __construct(private MixRepository $mixRepository)
+    public function __construct(
+        private MixRepository $mixRepository
+    )
     {
         parent::__construct();
     }
+
     protected function configure(): void
     {
         $this
-            ->addArgument('name', InputArgument::OPTIONAL, 'enter the name of the person')
-            ->addOption('yell', null, InputOption::VALUE_NONE, 'should I yell?')
+            ->addArgument('name', InputArgument::OPTIONAL, 'Your name')
+            ->addOption('yell', null, InputOption::VALUE_NONE, 'Shall I yell?')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $name = $input->getArgument('name') ?: "whoever you are";
-        $shouldYell = $input->getOption("yell");
+        $name = $input->getArgument('name') ?: 'whoever you are';
+        $shouldYell = $input->getOption('yell');
 
-        if ($name) {
-            $io->note(sprintf('You passed an argument: %s', $name));
-        }
-        $message = sprintf("Hello there, %s", $name);
-
+        $message = sprintf('Hey %s!', $name);
         if ($shouldYell) {
             $message = strtoupper($message);
-
         }
 
         $io->success($message);
 
-        if ($io->confirm("Do you want mix recommendation?")) {
+        if ($io->confirm('Do you want a mix recommendation?')) {
             $mixes = $this->mixRepository->findAll();
             $mix = $mixes[array_rand($mixes)];
-            $io->note("I recommend ".$mix["title"]);
+            $io->note('I recommend the mix: ' . $mix['title']);
         }
 
         return Command::SUCCESS;

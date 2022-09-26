@@ -1,16 +1,12 @@
 {
     "type": "project",
     "license": "proprietary",
-    "minimum-stability": "RC",
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/doctrine-bundle": "^2.7",
-        "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.13",
-        "knplabs/knp-time-bundle": "^1.19",
+        "knplabs/knp-time-bundle": "^1.18",
         "symfony/asset": "6.1.*",
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
@@ -18,7 +14,6 @@
         "symfony/framework-bundle": "6.1.*",
         "symfony/http-client": "6.1.*",
         "symfony/monolog-bundle": "^3.0",
-        "symfony/proxy-manager-bridge": "6.1.*",
         "symfony/runtime": "6.1.*",
         "symfony/twig-bundle": "6.1.*",
         "symfony/ux-turbo": "^2.0",
@@ -81,7 +76,7 @@
     },
     "require-dev": {
         "symfony/debug-bundle": "6.1.*",
-        "symfony/maker-bundle": "^1.46",
+        "symfony/maker-bundle": "^1.41",
         "symfony/stopwatch": "6.1.*",
         "symfony/web-profiler-bundle": "6.1.*"
     }
